@@ -22,26 +22,23 @@ class Person {
 
   get profile() {
     return `
-    # ${this.name} (${this.age})
-    Bio: ${this.bio}
-    
-    ## Photos (${this.photos.length})
+# ${this.name} (${this.age})
+Bio: ${this.bio}
 
-    ${this.photos
-      .map((photo) => {
-        return `### ${photo.filename}
-        ❤️ ${photo.likedBy.map((person) => person.name).join(",") || "no likes yet"}
-        `
-      })
-      .join("\n")}
-    `
-    }
+## Photos (${this.photos.length})
+
+${this.photos
+  .map((photo) => {
+    return `### ${photo.filename}
+    ❤️ ${photo.likedBy.map((person) => person.name).join(",") || "no likes yet"}`
+  })
+  .join("\n")}
+`
+ }
 
   set profile(newValue) {
     throw new Error(`Profile is only a getter. You cannot override it.`)
   }
 }
-
-
 
 module.exports = Person
